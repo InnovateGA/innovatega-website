@@ -72,3 +72,14 @@ token.
 
 The `/design-system/` route renders every token and component in every variant
 and is the source of truth for the design system.
+
+## SEO and analytics
+
+- Global site settings live in `lib/siteConfig.ts`.
+- Google Analytics is loaded from `app/layout.tsx` using the configured
+  measurement ID.
+- Google Search Console verification is configured in the root metadata export in
+  `app/layout.tsx`.
+- Homepage-specific Open Graph and X metadata live in `app/page.tsx`.
+- The `/design-system/` route is marked `noindex` in `app/design-system/page.tsx`
+  so it does not inherit the homepage's public sharing intent.

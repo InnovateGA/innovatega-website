@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import { asset } from "@/lib/assetPath";
 import { Nav } from "@/components/Nav";
@@ -6,8 +7,35 @@ import { Eyebrow } from "@/components/Eyebrow";
 import { Button } from "@/components/Button";
 import { CompanyCard } from "@/components/CompanyCard";
 import { Divider } from "@/components/Divider";
+import { buildAbsoluteUrl, siteConfig } from "@/lib/siteConfig";
 import { companies } from "./companies";
 import { principles } from "./manifesto";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: siteConfig.routes.home,
+  },
+  openGraph: {
+    description: siteConfig.defaultDescription,
+    images: [
+      {
+        url: buildAbsoluteUrl(siteConfig.socialImagePath),
+      },
+    ],
+    title: siteConfig.name,
+    type: "website",
+    url: buildAbsoluteUrl(siteConfig.routes.home),
+  },
+  other: {
+    "twitter:url": buildAbsoluteUrl(siteConfig.routes.home),
+  },
+  twitter: {
+    card: "summary_large_image",
+    description: siteConfig.defaultDescription,
+    images: [buildAbsoluteUrl(siteConfig.socialImagePath)],
+    title: siteConfig.name,
+  },
+};
 
 export default function Home() {
   return (
