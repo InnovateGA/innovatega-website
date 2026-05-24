@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import { asset } from "@/lib/assetPath";
 import { Nav } from "@/components/Nav";
@@ -13,7 +14,20 @@ import { CompanyCard } from "@/components/CompanyCard";
 import { PullQuote } from "@/components/PullQuote";
 import { ValueList } from "@/components/ValueList";
 import { Divider } from "@/components/Divider";
+import { siteConfig } from "@/lib/siteConfig";
 import { companies } from "@/app/companies";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: siteConfig.routes.designSystem,
+  },
+  description: "Tokens, typography, components, and motion for InnovateGA properties.",
+  robots: {
+    follow: false,
+    index: false,
+  },
+  title: "Design System",
+};
 
 const sections = [
   { id: "logo", label: "Logo" },
